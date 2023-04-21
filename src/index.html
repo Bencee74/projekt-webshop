@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png" href="./images/logo_v2.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/css/flag-icon.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&family=Montserrat:wght@100;300;400&display=swap"
+        rel="stylesheet">
+    <title>Projekt Webshop</title>
+    <script type="module" src=".js/services.js"></script>
+    <script type="module" src="./js/app.js"></script>
+    <script type="module" src="./js/userActions.js"></script>
+    <script type="module" src="./js/cartActions.js"></script>
+    <script type="module" src="./js/languageSelector.js"></script>
+    <script type="module" src="./js/searchActions.js"></script>
+    <script type="module" src="./js/cookies.js"></script>
+    <script src="https://kit.fontawesome.com/4bfb20f871.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body class="font-Montsarrat">
+
+    <!-- Loading animation -->
+    <div id="loading" class="fixed z-50 h-full w-full bg-white bg-opacity-70 flex justify-center items-center">
+        <div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+    </div>
+
+    <div class="main-container">
+
+        <!-- Desktop Header section -->
+        <div id="header" class="z-10 hidden md:flex flex-row justify-around fixed top-0 left-0 right-0 bg-white ">
+            <div id="logo" class="basis-1/6">
+                <a id="go-to-homepage">
+                    <img src="./images/logo_v2.png" alt="Projekt Webshop" class="cursor-pointer">
+                </a>
+            </div>
+
+            <div id="navigation" class="basis-3/6 flex justify-around items-center">
+                <a id="go-to-football" class="navElements">Futball</a>
+                <a id="go-to-tennis" class="navElements">Tenisz</a>
+                <a id="go-to-basketball" class="navElements">Kosárlabda</a>
+                <a id="go-to-all" class="navElements">Összes termék</a>
+            </div>
+
+            <div id="search-bar" class="flex justify-center items-center">
+                <input type="text" class="border border-gray-400 rounded-md mr-2 px-2 text-xs lg:text-base"
+                    id="search-input" placeholder="Keresés...">
+                <button id="search-btn" class="mr-4">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <div id="search-results" class="absolute top-24 right-4 bg-white border-2
+            max-h-96 overflow-y-auto border-black hidden">
+
+            </div>
+
+            <div id="user" class="flex justify-center items-center gap-4 lg:gap-8 relative">
+                <i id="profile-icon" class="fas fa-user hover:cursor-pointer lg:text-xl"></i>
+                <a id="go-to-cart" class="relative">
+                    <i class="fa-solid fa-cart-shopping hover:cursor-pointer lg:text-xl"></i>
+                    <span id="cart-count"
+                        class="bg-red-500 text-white text-xs font-bold rounded-full px-2 absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2"></span>
+                </a>
+                <div>
+                    <i id="selected-language" class="flag-icon flag-icon-hu cursor-pointer lg:text-xl"></i>
+                </div>
+                <div id="select-language" class="hidden">
+                    <div class="flex flex-col gap-2 bg-slate-100 rounded-md border-black border-2 p-1">
+                        <i id="select-hu" class="flag-icon flag-icon-hu cursor-pointer"></i>
+                        <i id="select-uk" class="flag-icon flag-icon-gb cursor-pointer"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Mobile Header Section -->
+        <div class="md:hidden flex flex-row justify-center items-center gap-2">
+            <div class="flex justify-start hover:cursor-pointer ml-4">
+                <i id="mobile-bar-icons" class="fa-solid fa-bars"></i>
+            </div>
+            <button id="search-btn-mobile" class="">
+                <i class="fas fa-search"></i>
+            </button>
+            <div id="search-bar-mobile" class="my-6 justify-center items-center hidden">
+                <input type="text" class="border border-gray-400 rounded-md mr-2 px-2 text-sm" id="search-input-mobile"
+                    placeholder="Keresés...">
+            </div>
+            <div id="search-results-mobile" class="absolute top-24 right-auto bg-white border-2
+            max-h-96 overflow-y-auto border-black hidden">
+
+            </div>
+            <div id="mobile-logo">
+                <a>
+                    <img id="go-to-homepage-mobile" src="./images/logo_v2.png" alt="Projekt Webshop"
+                        class="cursor-pointer" width="150">
+                </a>
+            </div>
+            <div class="flex gap-2">
+                <div>
+                    <i id="profile-icon-mobile" class="fas fa-user cursor-pointer"></i>
+                </div>
+                <div>
+                    <a class="relative">
+                        <i id="go-to-cart-mobile" class="fa-solid fa-cart-shopping cursor-pointer"></i>
+                        <span id="cart-count-mobile"
+                            class="bg-red-500 text-white text-xs font-bold rounded-full px-2 absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2"></span>
+                    </a>
+                </div>
+                <div>
+                    <i id="selected-language-mobile" class="flag-icon flag-icon-hu cursor-pointer"></i>
+                </div>
+            </div>
+            <div id="select-language-mobile" class="hidden">
+                <div class="flex flex-col gap-2 bg-slate-100 rounded-md border-black border-2 p-1">
+                    <i id="select-hu-mobile" class="flag-icon flag-icon-hu cursor-pointer"></i>
+                    <i id="select-uk-mobile" class="flag-icon flag-icon-gb cursor-pointer"></i>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu-selector" class="hidden md:hidden">
+            <div class="bg-black flex text-white flex-col pl-8 pb-8 gap-4">
+                <a id="go-to-football-mobile" class="navElementsMobile">Futball</a>
+                <a id="go-to-tennis-mobile" class="navElementsMobile">Tenisz</a>
+                <a id="go-to-basketball-mobile" class="navElementsMobile">Kosárlabda</a>
+                <a id="go-to-all-mobile" class="navElementsMobile">Összes termékünk </a>
+            </div>
+        </div>
+
+
+        <!-- Login card -->
+        <div id="dropdown-menu" class="hidden z-10 fixed right-0 bg-white rounded-lg shadow-md py-2 px-4">
+            <form id="login-form">
+                <label id="username-text" for="username" class="block text-gray-700 font-medium mb-2">Username:</label>
+                <input type="text" id="username-login" name="username" class="w-full border border-gray-400 p-2">
+                <label id="password-text" for="password"
+                    class="block text-gray-700 font-medium mb-2 mt-4">Password:</label>
+                <input type="password" id="password-login" name="password" class="w-full border border-gray-400 p-2">
+                <button id="submit-login"
+                    class="bg-gray-800 text-white py-2 px-4 mt-4 flex justify-center">Bejelentkezés</button>
+                <p id="login-text" class="flex justify-center mt-2 hover:cursor-pointer">Nincs még fiókod? Regisztrálj!
+                </p>
+            </form>
+        </div>
+
+        <!-- Logout card -->
+        <div id="dropdown-menu2" class="hidden z-10 fixed right-0 bg-white rounded-lg shadow-md py-2 px-4">
+            <div id="logged-in-user"></div>
+            <div id="admin-dashboard"></div>
+            <button id="logout" class="bg-gray-800 text-white py-2 px-4 mt-4">Kijelentkezés</button>
+        </div>
+
+        <!-- Registration card -->
+        <div id="dropdown-menu3" class="hidden z-10 fixed right-0 bg-white rounded-lg shadow-md py-2 px-4">
+            <form id="register-form">
+                <label for="username" class="block text-gray-700 font-medium mb-2">Username:</label>
+                <input type="text" id="username-reg" name="username-reg" class="w-full border border-gray-400 p-2">
+                <label for="password-reg1" class="block text-gray-700 font-medium mb-2 mt-4">Password:</label>
+                <input type="password" id="password-reg1" name="password-reg1"
+                    class="w-full border border-gray-400 p-2">
+                <label for="password-reg2" class="block text-gray-700 font-medium mb-2 mt-4">Password:</label>
+                <input type="password" id="password-reg2" name="password-reg2"
+                    class="w-full border border-gray-400 p-2">
+                <button id="submit-register"
+                    class="bg-gray-800 text-white py-2 px-4 mt-4 flex justify-center">Regisztráció</button>
+                <p id="register-text" class="flex justify-center mt-2 hover:cursor-pointer">Van már fiókod? Jelentkezz
+                    be!</p>
+            </form>
+        </div>
+
+        <!-- Message windows for user interactions -->
+        <div id="message-window-for-user"
+            class="hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg">
+            <button class="absolute top-2 right-3 text-gray-500 hover:text-black text-xl">
+                <i id="message-close-button" class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="p-6">
+                <p id="message-icon"></p>
+                <p id="main-message-for-user" class="text-lg mb-4"></p>
+            </div>
+        </div>
+
+        <!-- Dinamic main section -->
+        <div id="products-container" class="md:mt-16 xl:mt-28"> </div>
+
+        <!-- Cookies -->
+        <div id="projekt-info"
+            class="fixed top-0 left-0 w-full h-full hidden items-center justify-center bg-gray-900 bg-opacity-50">
+            <div class="bg-white rounded-lg overflow-hidden max-w-lg mx-auto p-4">
+                <div class="text-gray-800 text-lg font-bold mb-4">Ez az oldal egy projekt keretei között készült</div>
+                <div class="text-gray-700 text-base">
+                    <p>A ProjektWebshop egy fiktív webáruház, demonstrációs céllal.</p>
+                    <p>Tényleges vásárlás nem kivitelezhető az oldalon.</p>
+                </div>
+                <button id="accept-projekt-info"
+                    class="bg-gray-800 text-white rounded py-2 px-4 mt-4 hover:bg-gray-700 transition-colors duration-300">Értem!</button>
+            </div>
+        </div>
+
+        <div id="cookie-consent" class="fixed bottom-0 left-0 w-full bg-gray-800 text-white py-3 px-6 z-50 hidden">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm md:text-base mb-2 md:mb-0">A böngésző lokális tárolóját használjuk a felhasználóneved,
+                    a választott nyelv és pénznem
+                    tárolására. Ez lehetővé teszi számunkra, hogy testreszabott felhasználói élményt nyújtsunk, és
+                    emlékezzünk a beállításaidra a
+                    munkamenetek között. Ezen adatok helyben tárolódnak az eszközödön, és nem kerülnek megosztásra
+                    harmadik féllel.
+                </p>
+                <button id="accept-cookies"
+                    class="bg-white text-gray-800 rounded py-2 px-4 hover:bg-gray-300 transition-colors duration-300">Elfogadom</button>
+            </div>
+        </div>
+
+
+        <!-- Currency selector -->
+        <div id="selected-currency"
+            class="fixed border-2 border-black bottom-0 right-0 m-8 z-999 bg-slate-100 p-2 rounded-xl cursor-pointer shadow-lg">
+            <div class="grid grid-cols-2 gap-1">
+                <i id="selected-flag" class="flag-icon flag-icon-hu"></i>
+                <div id="selected-currency-name">HUF</div>
+            </div>
+        </div>
+
+        <div id="currency-selection"
+            class="fixed bottom-16 right-0 m-8 z-999 bg-slate-100 p-2 rounded-xl shadow-lg hidden">
+            <div id="select-huf" class="grid grid-cols-2 gap-1 mb-2 cursor-pointer">
+                <i class="flag-icon flag-icon-hu"></i>
+                <div>HUF</div>
+            </div>
+            <div id="select-eur" class="grid grid-cols-2 gap-1 cursor-pointer">
+                <i class="flag-icon flag-icon-eu"></i>
+                <div>EUR</div>
+            </div>
+        </div>
+
+        <!-- Footer section -->
+        <div id="footer"
+            class="flex flex-col mt-8 md:flex-row justify-center items-center p-8 bg-black text-white md:gap-16">
+
+            <div id="footer-nav" class="flex flex-col text-center w-52">
+                <a id="go-to-football-footer"
+                    class="my-2 text-lg font-semibold hover:cursor-pointer hover:text-gray-300">Futball</a>
+                <a id="go-to-tennis-footer"
+                    class="my-2 text-lg font-semibold hover:cursor-pointer hover:text-gray-300">Tenisz</a>
+                <a id="go-to-basketball-footer"
+                    class="my-2 text-lg font-semibold hover:cursor-pointer hover:text-gray-300">Kosárlabda</a>
+                <a id="go-to-all-footer"
+                    class="my-2 text-lg font-semibold hover:cursor-pointer hover:text-gray-300">Összes termék</a>
+            </div>
+
+            <div id="address" class="mt-8 md:mt-0 md:mx-8 text-center md:text-left">
+                <div id="open-time" class="footerElements mb-4 font-bold text-2xl border-b border-white h-12">
+                    Nyitvatartás:
+                </div>
+                <div id="monday" class="footerElements">H: 8:00 - 20:00</div>
+                <div id="tuesday" class="footerElements">K: 8:00 - 20:00</div>
+                <div id="wednesday" class="footerElements">Sze: 8:00 - 20:00</div>
+                <div id="thursday" class="footerElements">Cs: 8:00 - 20:00</div>
+                <div id="friday" class="footerElements">P: 8:00 - 20:00</div>
+                <div id="saturday" class="footerElements">Szo: 12:00 - 20:00</div>
+                <div id="sunday" class="footerElements border-b border-white h-12">V: 12:00 - 20:00</div>
+            </div>
+
+            <div id="socials" class="mt-8 md:mt-0">
+                <div class="flex flex-row gap-8">
+                    <a href="https://www.facebook.com">
+                        <img id="facebook" src="./images/facebook.png" alt="facebook" width="48" height="48">
+                    </a>
+                    <a href="https://www.instagram.com">
+                        <img id="instagram" src="./images/insta.png" alt="instagram" width="48" height="48">
+                    </a>
+                    <a href="https://www.youtube.com">
+                        <img id="youtube" src="./images/youtube.png" alt="youtube" width="48" height="48">
+                    </a>
+                </div>
+                <div class="mt-4">
+                    <p class="footerElements">All rights reserved</p>
+                    <p class="footerElements">© 2023 Projekt Webshop</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

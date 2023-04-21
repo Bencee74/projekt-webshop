@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navElements {
+    @apply relative md:text-base lg:text-xl xl:text-2xl uppercase tracking-[1px] hover:cursor-pointer 
+}
+
+.navElements::after {
+    @apply content-[''] bg-black h-[3px] w-[0%] left-0 -bottom-[5px] rounded-xl absolute duration-300
+}
+
+.navElementsMobile {
+    @apply relative text-xl uppercase tracking-[1px] hover:cursor-pointer
+}
+
+.navElementsMobile::after {
+    @apply content-[''] bg-white h-[3px] w-[0%] left-0 -bottom-[5px] rounded-xl absolute duration-300
+}
+
+.navElements:hover::after {
+    @apply w-[100%]
+}
+
+.navElementsMobile:hover::after {
+    @apply w-[90%]
+}
+
+.footerElements {
+    @apply flex justify-center
+}
+
+.product-name {
+    @apply text-2xl flex justify-center items-center text-center
+}
+
+.product-price {
+    @apply  text-gray-600 flex justify-center items-center
+}
+
+.button {
+    @apply border-2 border-black  text-black uppercase md:text-xl lg:text-2xl my-24 w-64 h-10 md:w-80 md:h-14 lg:w-96 lg:h-16 rounded-full
+}
+
+.button:hover {
+    @apply bg-black border-2 border-black text-white
+}
+
+#login {
+    @apply mt-16 w-24 h-12 md:text-base md:h-8 md:w-48 lg:text-lg lg:h-9 lg:w-52 xl:text-xl xl:h-11 xl:w-60 
+}
+
+#register {
+    @apply mt-16 w-32 h-12 md:text-base md:h-8 md:w-72 lg:text-lg lg:h-9 lg:w-80 xl:text-xl xl:h-11 xl:w-80
+}
+
+.container {
+    @apply flex justify-center
+}
+
+.category-photo {
+    @apply rounded-2xl max-w-sm w-72 shadow-xl
+}
+
+.category-photo-text {
+    @apply text-white text-2xl p-2 bg-black bg-opacity-70 rounded-xl
+}
+
+.brandPhotoText {
+    @apply absolute top-3/4 text-center text-6xl text-white bg-black bg-opacity-60 rounded-xl
+}
+
+#main-product-container {
+    @apply grid grid-cols-2
+}
+
+#main-product-pic {
+    @apply max-w-md mx-auto mt-8 shadow-md
+}
+
+#product-pic-container {
+    @apply grid grid-cols-3 gap-8 m-8
+}
+
+#product-name {
+    @apply text-3xl md:text-5xl mt-8 mx-auto justify-center items-center text-center
+}
+
+#product-price {
+    @apply text-2xl md:text-3xl
+}
+
+#product-toCart {
+    @apply w-1/2 mx-auto flex justify-center
+}
+
+#product-pic-1:hover, #product-pic-2:hover, #product-pic-3:hover {
+    @apply cursor-pointer
+}
+
+.size-notInStock {
+    @apply mb-2 border-black border-2 opacity-30 cursor-default z-0
+}
+
+#main-cart-container {
+    @apply max-w-xs md:max-w-2xl lg:max-w-3xl mx-auto
+}
+
+#product-sizes > button {
+    @apply mb-2 border-black border-2
+}
+.not-chosen-size {
+    @apply mb-2 border-black border-2
+}
+
+.not-chosen-size:hover {
+    @apply mb-2 border-black border-2 cursor-pointer bg-slate-100
+}
+
+.chosen-size {
+    @apply bg-primary-color
+}
+
+.shoes:hover {
+    @apply block
+}
+
+.input-field {
+    @apply border rounded w-full py-2 px-3 text-gray-700
+}
+
+.input-field-label {
+    @apply block text-gray-700 font-bold mb-2
+}
+
+.message-window-normal {
+    @apply z-10 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-100 border-2 border-blue-400 rounded-lg shadow-lg
+}
+
+.message-window-success {
+    @apply z-10 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-2 bg-green-100 border-green-500 rounded-lg shadow-lg
+}
+
+.message-window-failed {
+    @apply z-10 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-2 border-red-600 bg-red-100 rounded-lg shadow-lg
+}
+
+#failed {
+    @apply text-red-600 text-3xl mb-4
+}
+
+#success {
+    @apply text-green-500 text-3xl mb-4
+}
+
+#info {
+    @apply text-blue-400 text-3xl mb-4
+}
+
+#main-product-pic:hover {
+    @apply cursor-pointer
+}
